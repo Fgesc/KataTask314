@@ -49,5 +49,22 @@
             <li class="main-footer__lang-item"><input class="main-footer__lang-item_button main-footer__lang-item_button_cursor-pointer" type="button" value="CH"></li>
         </ul>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let focusElements = document.querySelectorAll('.page__nav-link_focus');
+            focusElements.forEach(function(element) {
+                element.addEventListener('blur', function(event) {
+                    setTimeout(function() {
+                        const hasFocus = Array.from(focusElements).some(function(focusElement) {
+                            return document.activeElement === focusElement;
+                        });
+                        if (!hasFocus) {
+                            event.target.focus();
+                        }
+                    }, 0);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
